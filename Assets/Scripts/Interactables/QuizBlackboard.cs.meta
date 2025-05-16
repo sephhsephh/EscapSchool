@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 0f421d871cf31d14ab186c9249f5b98d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - quizPanel: {instanceID: 0}
+  - quizTextTMP: {instanceID: 0}
+  - answerInput: {instanceID: 0}
+  - door: {instanceID: 0}
+  - scoreText: {instanceID: 0}
+  - submitResult: {instanceID: 0}
+  - livesText: {instanceID: 0}
+  - playerController: {fileID: 6194985898770488909, guid: 45f2583d76ca92c4f947cbc5187b03b3, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
