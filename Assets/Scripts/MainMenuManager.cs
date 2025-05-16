@@ -7,7 +7,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject modeSelectionPanel;
     [SerializeField] private GameObject multiplayerPanel;
-   
+    [SerializeField] private GameObject SelectLevelPanel;
 
 
     public void StartGame()
@@ -19,7 +19,7 @@ public class MainMenuManager : MonoBehaviour
 
        if (modeSelectionPanel != null)
         {
-            modeSelectionPanel.SetActive(true); // Show the mode selection panel
+            SelectLevelPanel.SetActive(true); // Show the Level selection panel
         }
     }
 
@@ -64,5 +64,13 @@ public class MainMenuManager : MonoBehaviour
     
             modeSelectionPanel.SetActive(true); // Show the start panel
         
+    }
+    public void BackToLevelSelect()
+    {
+        modeSelectionPanel.SetActive(false); // Hide the mode selection panel
+
+
+       SelectLevelPanel.SetActive(true); // Show the start panel
+
     }
 }
