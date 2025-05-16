@@ -101,11 +101,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5176600655549647685}
   m_SourcePrefab: {fileID: 100100000, guid: f3a64f8cbc0cfb24a8b1313216de6a15, type: 3}
---- !u!4 &2395309810169567006 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f3a64f8cbc0cfb24a8b1313216de6a15, type: 3}
-  m_PrefabInstance: {fileID: 2789805050784329973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3059643134051487140 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f3a64f8cbc0cfb24a8b1313216de6a15, type: 3}
@@ -180,7 +175,7 @@ MonoBehaviour:
   turnSpeed: 10
   gravity: 9.8
   stepHeight: 0.5
-  cameraTransform: {fileID: 2395309810169567006}
+  cameraTransform: {fileID: 0}
 --- !u!143 &7059162944541043741
 CharacterController:
   m_ObjectHideFlags: 0

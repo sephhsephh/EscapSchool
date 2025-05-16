@@ -67,10 +67,10 @@ public class MainMenuManager : MonoBehaviour
     }
     public void BackToLevelSelect()
     {
-        modeSelectionPanel.SetActive(false); // Hide the mode selection panel
+        modeSelectionPanel.SetActive(false);
 
 
-       SelectLevelPanel.SetActive(true); // Show the start panel
+       SelectLevelPanel.SetActive(true); 
 
     }
 }
