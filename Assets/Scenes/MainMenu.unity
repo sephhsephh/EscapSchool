@@ -2234,13 +2234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c18c1eaa1b27884d94bf7c0601b38e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPoints:
-  - point: {fileID: 794012507}
-    waitTime: 3
-  - point: {fileID: 1843460889}
-    waitTime: 4
-  - point: {fileID: 1327935833}
-    waitTime: 4
 --- !u!1 &337708740
 GameObject:
   m_ObjectHideFlags: 0
@@ -12169,6 +12162,14 @@ PrefabInstance:
     - target: {fileID: 2257882659432890849, guid: bd7e1e79484e15d4eb1b2df0833e2c7d, type: 3}
       propertyPath: m_Name
       value: TwoDoor (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2257882659432890849, guid: bd7e1e79484e15d4eb1b2df0833e2c7d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616041940494765319, guid: bd7e1e79484e15d4eb1b2df0833e2c7d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
