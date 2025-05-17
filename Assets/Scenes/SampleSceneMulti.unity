@@ -6982,7 +6982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   interactionMessage: Press E to interact
-  owner: {fileID: 3059643134051487140, guid: 2d90e1dc8e7c89241a3cf704530da3be, type: 3}
+  owner: {fileID: 0}
   playerTag: Player
 --- !u!114 &929332917
 MonoBehaviour:
@@ -9362,7 +9362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   interactionMessage: Press E to interact
-  owner: {fileID: 1373472168810405540, guid: 45f2583d76ca92c4f947cbc5187b03b3, type: 3}
+  owner: {fileID: 0}
   playerTag: Player
 --- !u!114 &1246002922
 MonoBehaviour:
