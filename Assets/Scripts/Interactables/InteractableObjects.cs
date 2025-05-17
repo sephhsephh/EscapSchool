@@ -1,83 +1,127 @@
 ﻿using UnityEngine;
+using Unity.Netcode;
+using UnityEngine.EventSystems;
 
-public class InteractableObject : MonoBehaviour
+public class InteractableObject : NetworkBehaviour
 {
     [SerializeField] private string interactionMessage = "Press E to interact";
     [SerializeField] private GameObject owner;
     [SerializeField] private string playerTag = "Player";
 
-    private InteractionUIManager uiManager;
     private bool hasInteracted = false;
-
-    private void Start()
-    {
-        uiManager = FindObjectOfType<InteractionUIManager>();
-        if (uiManager == null)
-        {
-            Debug.LogWarning("InteractionUIManager not found in scene!", this);
-        }
-    }
+    private GameObject currentPlayerInRange;
 
     private void OnTriggerEnter(Collider other)
     {
         if (hasInteracted) return;
 
-        // If there's an owner, only show to them (including clone versions)
-        if (owner != null)
-        {
-            string baseOwnerName = owner.name.Replace("(Clone)", "");
-            string otherName = other.gameObject.name.Replace("(Clone)", "");
+        // Check if this is the local player and meets ownership requirements
+        if (!IsValidInteractor(other)) return;
 
-            if (otherName == baseOwnerName)
-            {
-                ShowInteraction();
-            }
-            return;
-        }
-
-        // No owner - show to all players
-        if (other.CompareTag(playerTag))
-        {
-            ShowInteraction();
-        }
+        currentPlayerInRange = other.gameObject;
+        TryShowInteraction(currentPlayerInRange);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(playerTag))
+        if (other.CompareTag(playerTag) && currentPlayerInRange == other.gameObject)
         {
-            HideInteraction();
+            TryHideInteraction(currentPlayerInRange);
+            currentPlayerInRange = null;
             GetComponent<LessonComputer>()?.CloseLesson();
         }
     }
 
-    private void ShowInteraction()
+    private void Update()
     {
-        if (uiManager != null)
+        if (currentPlayerInRange == null) return;
+        if (!IsOwner) return; // Only owner can interact
+
+        // Prevent interaction if UI is focused
+        if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null)
         {
-            uiManager.ShowInteractionText(interactionMessage);
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            InteractWithObject(currentPlayerInRange);
         }
     }
 
-    private void HideInteraction()
+    private bool IsValidInteractor(Collider playerCollider)
     {
+        // Check if this is the local player
+        if (!IsLocalPlayera(playerCollider)) return false;
+
+        // Check ownership if required
+        if (owner != null)
+        {
+            string baseOwnerName = owner.name.Replace("(Clone)", "");
+            string otherName = playerCollider.gameObject.name.Replace("(Clone)", "");
+            return otherName == baseOwnerName;
+        }
+
+        return playerCollider.CompareTag(playerTag);
+    }
+
+    private bool IsLocalPlayera(Collider playerCollider)
+    {
+        return playerCollider.TryGetComponent(out NetworkObject netObj) && netObj.IsOwner;
+    }
+
+    private void TryShowInteraction(GameObject player)
+    {
+        var uiManager = player.GetComponentInChildren<InteractionUIManager>(true);
         if (uiManager != null)
         {
-            uiManager.HideInteractionText();
+            uiManager.ShowInteractionText(interactionMessage);
+            Debug.Log($"Showing text to {player.name}: {interactionMessage}");
+        }
+        else
+        {
+            Debug.LogWarning($"No InteractionUIManager found on player: {player.name}", player);
+        }
+    }
+
+    private void TryHideInteraction(GameObject player)
+    {
+        var uiManager = player.GetComponentInChildren<InteractionUIManager>(true);
+        uiManager?.HideInteractionText();
+    }
+
+    private void InteractWithObject(GameObject player)
+    {
+        var uiManager = player.GetComponentInChildren<InteractionUIManager>(true);
+
+        if (TryGetComponent<LessonComputer>(out LessonComputer lesson))
+        {
+            Debug.Log("Interacting with Lesson Computer");
+            lesson.ActivateLesson();
+            uiManager?.HideInteractionText();
+            MarkAsInteracted(true);
+        }
+        else if (TryGetComponent<QuizBlackboard>(out QuizBlackboard quiz))
+        {
+            Debug.Log("Interacting with Quiz Blackboard");
+            quiz.StartQuiz();
+            uiManager?.HideInteractionText();
+            MarkAsInteracted(true);
+        }
+        else
+        {
+            Debug.LogWarning("No interactable component found on " + gameObject.name);
         }
     }
 
     public void MarkAsInteracted(bool status)
     {
         hasInteracted = status;
-        if (status)
+        if (status && currentPlayerInRange != null)
         {
-            HideInteraction();
+            TryHideInteraction(currentPlayerInRange);
         }
     }
 
-    public bool HasBeenInteracted()
-    {
-        return hasInteracted;
-    }
+    public bool HasBeenInteracted() => hasInteracted;
 }
