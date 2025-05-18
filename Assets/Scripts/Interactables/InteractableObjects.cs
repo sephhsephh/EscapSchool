@@ -19,7 +19,7 @@ public class InteractableObject : NetworkBehaviour
         }
 
         // Check if this is the local player and meets ownership requirements
-        if (!IsValidInteractor(other)) return;
+        if (!IsValidInteractor(other) || HasBeenInteracted()) return;
 
         currentPlayerInRange = other.gameObject;
         TryShowInteraction(currentPlayerInRange);
@@ -109,7 +109,7 @@ public class InteractableObject : NetworkBehaviour
                 return;
             }
         }
-
+        if (HasBeenInteracted()) return;
         Debug.Log("Interacting with object: " + gameObject.name);
         var uiManager = player.GetComponentInChildren<InteractionUIManager>(true);
 
