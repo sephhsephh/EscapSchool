@@ -10,13 +10,13 @@ public class InteractionUIManager : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        if (!IsOwner)
-        {
-            // Disable or hide the UI for non-local players
-            interactionText.gameObject.SetActive(false);
-            enabled = false;
-            return;
-        }
+        //if (!IsOwner)
+        //{
+        //    // Disable or hide the UI for non-local players
+        //    interactionText.gameObject.SetActive(false);
+        //    enabled = false;
+        //    return;
+        //}
     }
 
     public void ShowInteractionText(string message)
@@ -30,7 +30,7 @@ public class InteractionUIManager : NetworkBehaviour
 
     public void HideInteractionText()
     {
-        if (!IsOwner) return;
+        //if (!IsOwner) return;
 
         interactionText.gameObject.SetActive(false);
         isVisible = false;

@@ -13,7 +13,10 @@ public class InteractableObject : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (hasInteracted) return;
+        if (hasInteracted)
+        {
+            Debug.Log("Already interacted with this object.");
+        }
 
         // Check if this is the local player and meets ownership requirements
         if (!IsValidInteractor(other)) return;
@@ -29,13 +32,14 @@ public class InteractableObject : NetworkBehaviour
             TryHideInteraction(currentPlayerInRange);
             currentPlayerInRange = null;
             GetComponent<LessonComputer>()?.CloseLesson();
+            MarkAsInteracted(false); // Reset interaction status when player leaves
         }
     }
 
     private void Update()
     {
         if (currentPlayerInRange == null) return;
-        if (!IsOwner) return; // Only owner can interact
+        //if (!IsOwner) return; // Only owner can interact
 
         // Prevent interaction if UI is focused
         if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null)
@@ -45,6 +49,7 @@ public class InteractableObject : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log("E pressed. Interacting with: " + currentPlayerInRange.name);
             InteractWithObject(currentPlayerInRange);
         }
     }
@@ -92,6 +97,20 @@ public class InteractableObject : NetworkBehaviour
 
     private void InteractWithObject(GameObject player)
     {
+        Debug.Log("pressed interacted");
+        if (owner != null)
+        {
+            Debug.Log("Owner is not null");
+            string baseOwnerName = owner.name.Replace("(Clone)", "");
+            string otherName = player.gameObject.name.Replace("(Clone)", "");
+            if (otherName != baseOwnerName)
+            {
+                Debug.Log("Owner name does not match");
+                return;
+            }
+        }
+
+        Debug.Log("Interacting with object: " + gameObject.name);
         var uiManager = player.GetComponentInChildren<InteractionUIManager>(true);
 
         if (TryGetComponent<LessonComputer>(out LessonComputer lesson))

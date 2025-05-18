@@ -90,7 +90,7 @@ public class CustomPlayerSpawner : MonoBehaviour
     private IEnumerator SetupLocalPlayerCoroutine()
     {
         // Wait until player object exists
-        while (NetworkManager.Singleton.LocalClient.PlayerObject == null)
+        while (NetworkManager.Singleton.LocalClient.PlayerObject == null)   
         {
             yield return null;
         }
