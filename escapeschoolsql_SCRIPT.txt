@@ -1,0 +1,65 @@
+CREATE DATABASE IF NOT EXISTS `game_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `game_db`;
+
+-- --------------------------------------------------------
+-- Table: questions
+-- --------------------------------------------------------
+
+CREATE TABLE `questions` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `question` TEXT NOT NULL,
+  `answer` TEXT NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+-- Table: users
+-- --------------------------------------------------------
+
+CREATE TABLE `users` (
+  `ID` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(255) NOT NULL,
+  `last_name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `role` ENUM('user','admin') NOT NULL,
+  `verified` TINYINT(1) DEFAULT 0,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+-- Table: leaderboard_singleplayer
+-- --------------------------------------------------------
+
+CREATE TABLE `leaderboard_singleplayer` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT(10) UNSIGNED NOT NULL,
+  `completion_time` FLOAT NOT NULL, -- time in seconds
+  `completed_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+-- Table: leaderboard_multiplayer
+-- --------------------------------------------------------
+
+CREATE TABLE `leaderboard_multiplayer` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `player1_id` INT(10) UNSIGNED NOT NULL,
+  `player2_id` INT(10) UNSIGNED NOT NULL,
+  `completion_time` FLOAT NOT NULL, -- Shared completion time in seconds
+  `completed_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`player1_id`) REFERENCES `users`(`ID`) ON DELETE CASCADE,
+  FOREIGN KEY (`player2_id`) REFERENCES `users`(`ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+-- Sample User
+-- --------------------------------------------------------
+
+INSERT INTO `users` (`first_name`, `last_name`, `email`, `password`, `role`, `verified`) VALUES
+('James', 'Tenosa', 'jamestenosa@gmail.com', '$2y$10$NSy5Cmgze6//CToSIet6sOt0b0mRs9tz.CXzJaGmhb/vwRD6qAbWG', 'user', 0);
+
+

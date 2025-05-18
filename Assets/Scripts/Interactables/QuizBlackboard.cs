@@ -3,9 +3,11 @@ using TMPro;
 using UnityEditor.VersionControl;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.Netcode;
 
-public class QuizBlackboard : MonoBehaviour
+public class QuizBlackboard : NetworkBehaviour
 {
+    public GameObject player;
     public GameObject quizPanel;
     public TMP_Text quizTextTMP;
     public TMP_InputField answerInput;
@@ -36,9 +38,9 @@ public class QuizBlackboard : MonoBehaviour
             answers[randomIndex] = tempAnswer;
         }
     }
-        
 
-    public void StartQuiz()
+
+    public void StartQuiz(GameObject plr)
     {
         GetComponent<InteractableObject>().MarkAsInteracted(true); // Mark as interacted prevent press e to intearact
         if (quizPanel != null && questions.Length > 0)
@@ -56,6 +58,9 @@ public class QuizBlackboard : MonoBehaviour
             submitResult.onClick.RemoveAllListeners();
             submitResult.onClick.AddListener(SubmitAnswer);
         }
+
+        player = plr;
+     
     }
 
     public void SubmitAnswer()
@@ -66,29 +71,29 @@ public class QuizBlackboard : MonoBehaviour
 
         if (playerAnswer == correctAnswer)
         {
-           print("Correct answer: " + playerAnswer);
+            print("Correct answer: " + playerAnswer);
             correctAnswers++;
             scoreText.text = "Score: " + correctAnswers + "/" + questions.Length;
 
         }
         else
         {
-            print("Wrong answer: " + playerAnswer);
-            lives--;
-            livesText.text = "Lives: " + lives;
-            if (lives <= 0)
-            {
-                quizPanel.SetActive(false);
-                questionIndex = 0;
-                correctAnswers = 0;
-                lives = 3;
-                GetComponent<InteractableObject>().MarkAsInteracted(false);
-                EventSystem.current.SetSelectedGameObject(null);
-                return;
-            }
+            //print("Wrong answer: " + playerAnswer);
+            //lives--;
+            //livesText.text = "Lives: " + lives;
+            //if (lives <= 0)
+            //{
+            //    quizPanel.SetActive(false);
+            //    questionIndex = 0;
+            //    correctAnswers = 0;
+            //    lives = 3;
+            //    GetComponent<InteractableObject>().MarkAsInteracted(false);
+            //    EventSystem.current.SetSelectedGameObject(null);
+            //    return;
+            //}
         }
 
-            questionIndex++;
+        questionIndex++;
         DisplayQuestion();
     }
 
@@ -109,10 +114,16 @@ public class QuizBlackboard : MonoBehaviour
     {
         quizPanel.SetActive(false);
 
-        if (correctAnswers >= (questions.Length / 2) + 1)
+        if (correctAnswers >= 0)
         {
             print("Quiz passed!");
             door.SetActive(false);  // Unlock door
+
+            
+            player.GetComponentInChildren<ArrowPointer>().SetVisible(true); // Point to the door
+            player.GetComponentInChildren<ArrowPointer>().SetTarget(door.transform); // Point to the door
+
+
         }
         else
         {

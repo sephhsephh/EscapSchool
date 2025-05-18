@@ -58,12 +58,13 @@ public class InteractableObject : NetworkBehaviour
     {
         // Check if this is the local player
         if (!IsLocalPlayera(playerCollider)) return false;
-
+        //Debug.Log("is local palyer!!!!!!!!!!!!!!!!!!");
         // Check ownership if required
         if (owner != null)
         {
             string baseOwnerName = owner.name.Replace("(Clone)", "");
             string otherName = playerCollider.gameObject.name.Replace("(Clone)", "");
+            Debug.Log($"Base owner name: {baseOwnerName}, Other name: {otherName}");
             return otherName == baseOwnerName;
         }
 
@@ -123,7 +124,7 @@ public class InteractableObject : NetworkBehaviour
         else if (TryGetComponent<QuizBlackboard>(out QuizBlackboard quiz))
         {
             Debug.Log("Interacting with Quiz Blackboard");
-            quiz.StartQuiz();
+            quiz.StartQuiz(player);
             uiManager?.HideInteractionText();
             MarkAsInteracted(true);
         }
