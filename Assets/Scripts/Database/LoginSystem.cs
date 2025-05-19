@@ -53,6 +53,6 @@ public class LoginSystem : MonoBehaviour
 
     public void OpenURL()
     {
-        Application.OpenURL("https://localhost/website_name_niyo");
+        Application.OpenURL("localhost/escape_school/register-test.php");
     }
 }
