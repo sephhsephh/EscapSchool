@@ -9,7 +9,7 @@ public class ProjectorAnswerScript : NetworkBehaviour
     public string correctAnswer = "answer here";
     public TMP_InputField answer;
     public Button submitButton;
-
+    public GameObject canvas;
     private void Start()
     {
         submitButton.onClick.AddListener(CheckAnswer);
@@ -27,6 +27,7 @@ public class ProjectorAnswerScript : NetworkBehaviour
             {
                 EnableInteractableServerRpc();
             }
+            canvas.SetActive(false);
         }
     }
 
