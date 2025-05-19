@@ -30186,10 +30186,22 @@ PrefabInstance:
     - target: {fileID: 8969031110560187486, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 102900000, guid: 05de8c684133347438f17a1de08e1fd4, type: 3}
+      objectReference: {fileID: 4568324041581352184}
     - target: {fileID: 8969031110560187486, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969031110560187486, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onResumeButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969031110560187486, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8969031110560187486, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 9008922341604007089, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
       propertyPath: m_AnchorMax.x
