@@ -121,8 +121,46 @@ public class PHPRequestHandler : MonoBehaviour
         }
     }
 
+    public void GetQuestions(string difficulty, Action<bool, string, List<Question>> callback)
+    {
+        StartCoroutine(GetQuestionsCoroutine(difficulty, callback));
+    }
 
-    // ... (keep your existing GetQuestions method)
+    private IEnumerator GetQuestionsCoroutine(string difficulty, Action<bool, string, List<Question>> callback)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("difficulty", difficulty);
+
+        using (UnityWebRequest www = UnityWebRequest.Post(baseURL + "get_questions.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                try
+                {
+                    QuestionsResponse response = JsonUtility.FromJson<QuestionsResponse>(www.downloadHandler.text);
+                    if (response != null)
+                    {
+                        callback(response.success, response.message, response.questions);
+                    }
+                    else
+                    {
+                        callback(false, "Failed to parse server response", null);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("JSON Parse Error: " + e.Message);
+                    callback(false, "Error processing server response", null);
+                }
+            }
+            else
+            {
+                callback(false, "Connection error: " + www.error, null);
+            }
+        }
+    }
 }
 
 
@@ -159,20 +197,18 @@ public class UserData
 }
 
 [System.Serializable]
-public class QuestionList
-{
-    public List<Question> questions;
-}
-
-[System.Serializable]
 public class Question
 {
     public int id;
-    public string question_text;
-    public string option_a;
-    public string option_b;
-    public string option_c;
-    public string option_d;
-    public string correct_answer;
-    public int difficulty_level;
+    public string question;
+    public string answer;
+    public string difficulty;
+}
+
+[System.Serializable]
+public class QuestionsResponse
+{
+    public bool success;
+    public string message;
+    public List<Question> questions;
 }

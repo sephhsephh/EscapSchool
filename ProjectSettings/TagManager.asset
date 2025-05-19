@@ -11,6 +11,7 @@ TagManager:
   - Interactable
   - QuizUI
   - GirlBlackboard
+  - BoyAnswerDoor1
   layers:
   - Default
   - TransparentFX

@@ -34,7 +34,7 @@ public class LessonComputer : MonoBehaviour
         {
             lessonPanel.SetActive(true);
             //lessonTextDisplay.text = lessonText;
-            Debug.Log("Lesson Panel should now be visible.");
+            //Debug.Log("Lesson Panel should now be visible.");
         }
         else
         {
@@ -47,7 +47,7 @@ public class LessonComputer : MonoBehaviour
         if (lessonPanel != null)
         {
             lessonPanel.SetActive(false);
-            Debug.Log("Lesson Panel is now hidden.");
+            //Debug.Log("Lesson Panel is now hidden.");
         }
     }
 }

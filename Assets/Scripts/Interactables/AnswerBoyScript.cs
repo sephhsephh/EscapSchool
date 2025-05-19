@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,9 @@ public class AnswerBoyScript : MonoBehaviour
     public GameObject canvas;
     public Button submitButton;
     public GameObject nextTarget;
+
+
+    public NetworkDoor networkDoor;
 
     // Correct answers
     public string correctAnswer1 = "cout <<";
@@ -37,6 +41,8 @@ public class AnswerBoyScript : MonoBehaviour
             canvas.SetActive(false);
             door.SetActive(false);
 
+            DisableDoorServerRpc();
+
             // Broadcast to ALL player prefabs in scene
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
             foreach (GameObject player in players)
@@ -57,5 +63,11 @@ public class AnswerBoyScript : MonoBehaviour
         {
             Debug.Log("Incorrect");
         }
+    }
+    [ServerRpc(RequireOwnership = false)]
+    private void DisableDoorServerRpc()
+    {
+        // Server validates & disables door
+        networkDoor.SetDoorState(false);
     }
 }
