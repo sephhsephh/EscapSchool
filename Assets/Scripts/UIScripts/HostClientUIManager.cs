@@ -37,6 +37,6 @@ public class HostClientUIManager : MonoBehaviour
             NetworkConnectionData.NetworkConnectionType.Host :
             NetworkConnectionData.NetworkConnectionType.Client;
 
-        SceneManager.LoadScene("SampleSceneMulti");
+        SceneManager.LoadScene("Cutscene 2");
     }
 }
