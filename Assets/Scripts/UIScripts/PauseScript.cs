@@ -10,6 +10,11 @@ public class PauseScript : MonoBehaviour
     public void onPauseButtonClick()
     {
         Debug.Log("clicked pause");
-        pausepanel.SetActive(!pausepanel.activeSelf);
+        pausepanel.SetActive(true);
+    }
+    public void onResumeButtonClick()
+    {
+        Debug.Log("clicked pause");
+        pausepanel.SetActive(false);
     }
 }

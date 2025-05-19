@@ -560,7 +560,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1897049602}
         m_TargetAssemblyTypeName: LoginSystem, Assembly-CSharp
-        m_MethodName: OpenURL
+        m_MethodName: OnRegisterButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -44,4 +44,9 @@ public class LoginSystem : MonoBehaviour
             }
         );
     }
+    public void OnRegisterButtonClicked()
+    {
+        Application.OpenURL("http://localhost/escape_school/register-test.php");
+    }
+
 }
