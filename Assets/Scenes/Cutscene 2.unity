@@ -163,7 +163,7 @@ PlayableDirector:
   - key: {fileID: 4981585688312290497, guid: 546ec119f7621274cb7cefe5c37d334c, type: 2}
     value: {fileID: 1954018478}
   - key: {fileID: -5823544567400115803, guid: 546ec119f7621274cb7cefe5c37d334c, type: 2}
-    value: {fileID: 798308372}
+    value: {fileID: 870101028}
   - key: {fileID: -7698851224229108857, guid: 546ec119f7621274cb7cefe5c37d334c, type: 2}
     value: {fileID: 1334624396}
   m_ExposedReferences:
@@ -247,8 +247,8 @@ RectTransform:
   - {fileID: 297517058}
   - {fileID: 941265107}
   - {fileID: 1954018481}
+  - {fileID: 870101029}
   - {fileID: 1334624398}
-  - {fileID: 798308374}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -622,7 +622,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &798308371
+--- !u!1 &870101027
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -630,31 +630,29 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 798308374}
-  - component: {fileID: 798308372}
-  - component: {fileID: 798308373}
+  - component: {fileID: 870101029}
+  - component: {fileID: 870101028}
   m_Layer: 0
-  m_Name: Suspense Mystery Dark Mysterious Thriller Music (No Copyright)Tension Investigation
-    Background Music
+  m_Name: eerie-21716
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &798308372
+--- !u!82 &870101028
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798308371}
+  m_GameObject: {fileID: 870101027}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 625bd8bf52458c944943f111e382de6f, type: 2}
-  m_audioClip: {fileID: 8300000, guid: d379535ec13c52540b7ce7b3eb1e5eef, type: 3}
-  m_Resource: {fileID: 8300000, guid: d379535ec13c52540b7ce7b3eb1e5eef, type: 3}
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8ce0632e9277a9840bfa7057d256f693, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8ce0632e9277a9840bfa7057d256f693, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.47
+  m_Volume: 0.27
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -738,35 +736,13 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &798308373
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798308371}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!4 &798308374
+--- !u!4 &870101029
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798308371}
+  m_GameObject: {fileID: 870101027}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -960, y: -540, z: 0}
