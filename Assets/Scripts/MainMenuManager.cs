@@ -58,10 +58,16 @@ public class MainMenuManager : MonoBehaviour
             modeSelectionPanel.SetActive(false); // Hide the mode selection panel
         }
 
+        if (profilePanel != null)
+        {
+            profilePanel.SetActive(false); // Hide the profile panel
+        }
+
         if (startPanel != null)
         {
             startPanel.SetActive(true); // Show the start panel
         }
+        
     }
     public void BackToSelection()
     {

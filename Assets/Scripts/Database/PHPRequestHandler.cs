@@ -24,6 +24,22 @@ public class PHPRequestHandler : MonoBehaviour
         }
     }
 
+
+    public IEnumerator TestConnection()
+    {
+        // Simple test query
+        using (UnityWebRequest www = UnityWebRequest.Get(baseURL + "test_connection.php"))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Connection test failed: " + www.error);
+                // Handle retry logic if needed
+            }
+        }
+    }
+
     public void RegisterUser(string email, string password, string firstName, string lastName,
                            System.Action<bool, string> callback, string role = "user", bool verified = false)
     {

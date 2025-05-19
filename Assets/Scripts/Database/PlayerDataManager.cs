@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDataManager : MonoBehaviour
 {
@@ -11,12 +12,29 @@ public class PlayerDataManager : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject); // Destroy duplicate
+            return;
         }
-        else
+
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        // Ensure this scene stays loaded
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    public void Initialize()
+    {
+        // Any initialization logic needed
+        Debug.Log("PlayerDataManager initialized");
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Unload the Managers scene if it's not needed
+        if (scene.name != "Managers" && SceneManager.GetSceneByName("Managers").isLoaded)
         {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
+            // Keep managers loaded - we need them!
+            // SceneManager.UnloadSceneAsync("Managers");
         }
     }
 
@@ -29,5 +47,10 @@ public class PlayerDataManager : MonoBehaviour
     public void ClearUserData()
     {
         CurrentUser = null;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
