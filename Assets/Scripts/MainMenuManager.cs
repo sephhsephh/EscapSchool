@@ -38,7 +38,7 @@ public class MainMenuManager : MonoBehaviour
     public void StartSinglePlayer()
     {
         PlayerPrefs.SetInt("GameMode", 0); // 0 for Single Player
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Cutscene");
     }
 
     public void StartMultiplayer()
