@@ -8,6 +8,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject modeSelectionPanel;
     [SerializeField] private GameObject multiplayerPanel;
     [SerializeField] private GameObject SelectLevelPanel;
+    [SerializeField] private GameObject profilePanel;
 
 
     public void StartGame()
@@ -21,6 +22,11 @@ public class MainMenuManager : MonoBehaviour
         {
             SelectLevelPanel.SetActive(true); // Show the Level selection panel
         }
+    }
+
+    public void ToggleProfile()
+    {
+        profilePanel.SetActive(true);
     }
 
     public void ExitGame()

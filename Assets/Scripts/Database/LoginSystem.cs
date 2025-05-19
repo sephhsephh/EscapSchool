@@ -1,58 +1,47 @@
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using System.Threading.Tasks;
 
 public class LoginSystem : MonoBehaviour
 {
-
     public TMP_InputField emailInput;
     public TMP_InputField passwordInput;
     public TMP_Text messageText;
-
-    public GameObject loginCanvas;
-    public GameObject startCanvas;
-    public GameObject invalidLoginPanel;
+    public GameObject startPanel;
+    public GameObject loginPanel;
+    public GameObject errorPanel;
 
     public void OnLoginButtonClicked()
     {
+        if (string.IsNullOrEmpty(emailInput.text) || string.IsNullOrEmpty(passwordInput.text))
+        {
+            messageText.text = "Please enter both email and password";
+            return;
+        }
+
+        messageText.text = "Logging in...";
+
         PHPRequestHandler.Instance.LoginUser(
             emailInput.text,
             passwordInput.text,
             async (success, message, userData) => {
                 messageText.text = message;
+
                 if (success)
                 {
-                    Debug.Log($"Welcome {userData.first_name} {userData.last_name}!");
-                    Debug.Log($"Role: {userData.role}, Verified: {userData.verified}");
-
-                    //// Load appropriate scene based on role
-                    //if (userData.role == "admin")
-                    //{
-                    //    SceneManager.LoadScene("AdminDashboard"); 
-                    //}
-                    //else
-                    //{
-                    //    SceneManager.LoadScene("MainMenu");
-                    //}
-                    loginCanvas.SetActive(false);
-                    startCanvas.SetActive(true);
-
+                    // Store user data in the manager
+                    PlayerDataManager.Instance.SetUserData(userData);
+                    SceneManager.LoadScene("MainMenu");
                 }
                 else
                 {
-                    invalidLoginPanel.SetActive(true);
+                    errorPanel.SetActive(true);
                     await Task.Delay(2000);
-                    invalidLoginPanel.SetActive(false);
+                    errorPanel.SetActive(false);
                 }
             }
         );
-    }
-
-    public void OpenURL()
-    {
-        Application.OpenURL("localhost/escape_school/register-test.php");
     }
 }
