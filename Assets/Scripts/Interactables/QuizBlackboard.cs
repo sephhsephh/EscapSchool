@@ -116,7 +116,7 @@ public class QuizBlackboard : NetworkBehaviour
     {
         quizPanel.SetActive(false);
 
-        if (correctAnswers >= 0.75 * currentQuestions.Count) // You can adjust this threshold
+        if (correctAnswers >= 0.70 * currentQuestions.Count) // You can adjust this threshold
         {
             print("Quiz passed!");
             door.SetActive(false);  // Unlock door
