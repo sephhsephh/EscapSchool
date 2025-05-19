@@ -4439,6 +4439,7 @@ MonoBehaviour:
   scoreText: {fileID: 906206945}
   submitResult: {fileID: 906206944}
   livesText: {fileID: 906206943}
+  nextTarget: {fileID: 1954089963}
   questions:
   - How do you declare an integer variable named score?
   - "What is the correct way to assign the value 7 to a variable x?\r"
@@ -4936,6 +4937,7 @@ MonoBehaviour:
   door: {fileID: 1678012119281459887}
   canvas: {fileID: 196516314}
   submitButton: {fileID: 5402888650247302769}
+  nextTarget: {fileID: 1075307222}
   correctAnswer1: cout <<
   correctAnswer2: a
   correctAnswer3: b
@@ -8092,6 +8094,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 185fc98c7764cd742a78e01ba57bb60a, type: 3}
   m_PrefabInstance: {fileID: 1532785277}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &321723890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 264928105657413046, guid: d63c2705b8233944daeed173bff58884, type: 3}
+  m_PrefabInstance: {fileID: 1596793746}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &321723892
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321723890}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000002, y: 1.9999996, z: 5.684342e-14}
+  m_Center: {x: -0.0000000037252903, y: 0.00000011920929, z: 0.000000059604645}
 --- !u!1 &326621823
 GameObject:
   m_ObjectHideFlags: 0
@@ -16006,7 +16034,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 747790938}
-  - component: {fileID: 747790939}
   m_Layer: 0
   m_Name: Triggers (1)
   m_TagString: Untagged
@@ -16023,30 +16050,13 @@ Transform:
   m_GameObject: {fileID: 747790937}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -5, y: 41.2, z: 63.8}
-  m_LocalScale: {x: 4.545452, y: 5, z: 5.500001}
+  m_LocalPosition: {x: -5, y: 37.698, z: 63.8}
+  m_LocalScale: {x: 4.545452, y: 20.5625, z: 5.500001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1226827454}
   m_Father: {fileID: 2135951424}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &747790939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 747790937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 113d0b0811244864f96ed0b583797c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Door: {fileID: 1075307222}
-  closedPosition: {x: -41, y: 42.1, z: 48.5}
-  closedRotation: {x: 0, y: -90, z: 0}
-  openPosition: {x: -21.8, y: 42.1, z: 60.3}
-  openRotation: {x: 0, y: -150, z: 0}
 --- !u!1 &761785875
 GameObject:
   m_ObjectHideFlags: 0
@@ -21508,10 +21518,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 2.0000002, y: 1.9999995, z: 1.9999998}
-  m_Center: {x: 0, y: 0.00000011920929, z: 0.00000017881393}
+  m_Size: {x: 0, y: 1.9999994, z: 1.9999998}
+  m_Center: {x: -1.0000001, y: 0.00000009082613, z: 0.00000019073485}
 --- !u!65 &1000227152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23338,7 +23348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d94f27c1c3bde504dbabfb7e07da7fba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 42.1
+      value: 38.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d94f27c1c3bde504dbabfb7e07da7fba, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26310,7 +26320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d94f27c1c3bde504dbabfb7e07da7fba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26639,6 +26649,7 @@ GameObject:
   - component: {fileID: 1226827457}
   - component: {fileID: 1226827456}
   - component: {fileID: 1226827455}
+  - component: {fileID: 1226827459}
   m_Layer: 0
   m_Name: Enter2ndRoom
   m_TagString: Untagged
@@ -26754,6 +26765,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226827453}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1226827459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226827453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113d0b0811244864f96ed0b583797c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Door: {fileID: 1075307222}
 --- !u!1 &1234942912
 GameObject:
   m_ObjectHideFlags: 0
@@ -35249,11 +35273,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2866957287120260535, guid: d63c2705b8233944daeed173bff58884, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32
+      value: 35.9
       objectReference: {fileID: 0}
     - target: {fileID: -2866957287120260535, guid: d63c2705b8233944daeed173bff58884, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 140.8
+      value: 137.1
       objectReference: {fileID: 0}
     - target: {fileID: -2704599624376923797, guid: d63c2705b8233944daeed173bff58884, type: 3}
       propertyPath: m_LocalPosition.x
@@ -38116,6 +38140,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 10505992670680718, guid: d63c2705b8233944daeed173bff58884, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1845830605}
+    - targetCorrespondingSourceObject: {fileID: 264928105657413046, guid: d63c2705b8233944daeed173bff58884, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 321723892}
   m_SourcePrefab: {fileID: 100100000, guid: d63c2705b8233944daeed173bff58884, type: 3}
 --- !u!1 &1596793747 stripped
 GameObject:
@@ -46928,6 +46955,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1341734458}
   m_SourcePrefab: {fileID: 100100000, guid: d94f27c1c3bde504dbabfb7e07da7fba, type: 3}
+--- !u!1 &1954089963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d94f27c1c3bde504dbabfb7e07da7fba, type: 3}
+  m_PrefabInstance: {fileID: 1954089962}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1955862190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 185fc98c7764cd742a78e01ba57bb60a, type: 3}
@@ -51453,15 +51485,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2257882659432890849, guid: bd7e1e79484e15d4eb1b2df0833e2c7d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6616041940494765319, guid: bd7e1e79484e15d4eb1b2df0833e2c7d, type: 3}
       propertyPath: m_Size.y
       value: 6.206177
       objectReference: {fileID: 0}
     - target: {fileID: 6616041940494765319, guid: bd7e1e79484e15d4eb1b2df0833e2c7d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616041940494765319, guid: bd7e1e79484e15d4eb1b2df0833e2c7d, type: 3}
       propertyPath: m_Center.y
       value: 3.0565767
+      objectReference: {fileID: 0}
+    - target: {fileID: 6616041940494765319, guid: bd7e1e79484e15d4eb1b2df0833e2c7d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

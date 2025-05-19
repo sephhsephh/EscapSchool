@@ -1,46 +1,61 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Level3DoorCloser : MonoBehaviour
 {
     public GameObject Door;
-    public Vector3 closedPosition = new Vector3(-41f, 42.1f, 48.5f);
-    public Vector3 closedRotation = new Vector3(0f, -90f, 0f); // Euler angles (x, y, z)
-    public Vector3 openPosition = new Vector3(-21.8f, 42.1f, 60.3f);
-    public Vector3 openRotation = new Vector3(0f, -150f, 0f); // Default rotation when open
 
-    private int touchedPlayerCount = 0;
-    private const int RequiredPlayerCount = 1;
-    private bool doorClosed = false;
+    // Door states (using your exact coordinates)
+    private Vector3 _closedPosition = new Vector3(-22.65138f, -2.0802f, -63.7955f);
+    private Quaternion _closedRotation = new Quaternion(0f, -0.7071068f, 0f, 0.7071068f);
+    private Vector3 _openPosition = new Vector3(-18.81138f, -1.48f, -61.4355f);
+    private Quaternion _openRotation = new Quaternion(0f, -0.9659258f, 0f, 0.2588191f);
+
+    private HashSet<string> _touchedPlayers = new HashSet<string>();
+    private const int RequiredPlayerCount = 2;
+    private bool _isDoorClosed = false;
+    private float _closeDelay = 1f; // 3 second delay before closing
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!doorClosed && other.CompareTag("Player"))
+        if (!_isDoorClosed && other.CompareTag("Player") && !_touchedPlayers.Contains(other.name))
         {
-            touchedPlayerCount++;
-            if (touchedPlayerCount >= RequiredPlayerCount)
+            _touchedPlayers.Add(other.gameObject.name);
+
+            if (_touchedPlayers.Count >= RequiredPlayerCount)
             {
-                CloseDoor();
+                Invoke("CloseDoor", _closeDelay);
             }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //if (other.CompareTag("Player"))
+        //{
+        //    _touchedPlayers.Remove(other.name);
+        //}
     }
 
     public void OpenDoor()
     {
         if (Door != null)
         {
-            Door.transform.position = openPosition;
-            Door.transform.rotation = Quaternion.Euler(openRotation);
-            doorClosed = false;
+            Door.transform.position = _openPosition;
+            Door.transform.rotation = _openRotation;
+            _isDoorClosed = false;
+            _touchedPlayers.Clear();
+            CancelInvoke("CloseDoor"); // Cancel pending close
         }
     }
 
-    public void CloseDoor()
+    private void CloseDoor()
     {
-        if (Door != null)
+        if (Door != null && !_isDoorClosed)
         {
-            Door.transform.position = closedPosition;
-            Door.transform.rotation = Quaternion.Euler(closedRotation);
-            doorClosed = true;
+            Door.transform.position = _closedPosition;
+            Door.transform.rotation = _closedRotation;
+            _isDoorClosed = true;
         }
     }
 }

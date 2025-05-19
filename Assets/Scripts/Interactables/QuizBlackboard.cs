@@ -15,6 +15,7 @@ public class QuizBlackboard : NetworkBehaviour
     public TMP_Text scoreText;
     public Button submitResult;
     public TMP_Text livesText;
+    public GameObject nextTarget;
 
     [TextArea]
     public string[] questions;
@@ -121,7 +122,7 @@ public class QuizBlackboard : NetworkBehaviour
 
             
             player.GetComponentInChildren<ArrowPointer>().SetVisible(true); // Point to the door
-            player.GetComponentInChildren<ArrowPointer>().SetTarget(door.transform); // Point to the door
+            player.GetComponentInChildren<ArrowPointer>().SetTarget(nextTarget.transform); // Point to the door
 
 
         }

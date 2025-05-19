@@ -11,8 +11,9 @@ public class AnswerBoyScript : MonoBehaviour
     public GameObject door;
     public GameObject canvas;
     public Button submitButton;
+    public GameObject nextTarget;
 
-    // Set the correct answers (you can also do this from the Inspector)
+    // Correct answers
     public string correctAnswer1 = "cout <<";
     public string correctAnswer2 = "a";
     public string correctAnswer3 = "b";
@@ -20,23 +21,37 @@ public class AnswerBoyScript : MonoBehaviour
 
     void Start()
     {
-        // Hook up the button click event
         submitButton.onClick.AddListener(CheckAnswers);
     }
 
     void CheckAnswers()
     {
         if (
-            input1.text == correctAnswer1 &&
-            input2.text == correctAnswer2 &&
-            input3.text == correctAnswer3 &&
-            input4.text == correctAnswer4
+            input1.text.Trim().ToLower() == correctAnswer1.ToLower() &&
+            input2.text.Trim().ToLower() == correctAnswer2.ToLower() &&
+            input3.text.Trim().ToLower() == correctAnswer3.ToLower() &&
+            input4.text.Trim().ToLower() == correctAnswer4.ToLower()
         )
         {
             Debug.Log("Correct");
             canvas.SetActive(false);
-            door.SetActive(false); // Hide the door
-            // TODO: Trigger the next event
+            door.SetActive(false);
+
+            // Broadcast to ALL player prefabs in scene
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject player in players)
+            {
+                ArrowPointer pointer = player.GetComponentInChildren<ArrowPointer>(true);
+                if (pointer != null)
+                {
+                    pointer.SetVisible(true);
+                    pointer.SetTarget(nextTarget.transform);
+                }
+                else
+                {
+                    Debug.LogWarning("ArrowPointer not found on " + player.name);
+                }
+            }
         }
         else
         {
