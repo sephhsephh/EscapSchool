@@ -30538,6 +30538,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2777636056553698271, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777636056553698271, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777636056553698271, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4568324041581352184}
+    - target: {fileID: 2777636056553698271, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777636056553698271, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onQuitButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777636056553698271, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777636056553698271, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4936583643728134653, guid: 93ced68f5b9f3db46b87d4247202cd7e, type: 3}
       propertyPath: m_Sprite
       value: 
