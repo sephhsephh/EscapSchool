@@ -4508,7 +4508,11 @@ MonoBehaviour:
   submitResult: {fileID: 906206944}
   livesText: {fileID: 906206943}
   nextTarget: {fileID: 1954089963}
-  currentQuestions: []
+  currentQuestions:
+  - id: 1
+    question: asdasdasd
+    answer: 1
+    difficulty: easy
 --- !u!1 &176838593
 GameObject:
   m_ObjectHideFlags: 0
